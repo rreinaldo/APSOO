@@ -1,0 +1,4 @@
+GERENCIAR FUNCIONÁRIOS:efetuar inclusão,alteração e exclusão dos funcionários do cadastro.
+CADASTRAR JUSTIFICATIVAS:o funcionário deve inserir justificativas das entradas faltantes no seu registro de marcações.
+VALIDAR JUSTIFICATIVAS:o chefe imediato deve validar as justificativas das entradas faltantes enviadas pelos funcionários.
+IMPORTAR OS REGISTROS DE PONTO:o responsável do RH deve extrair os registros de frequência diária de um determinado período.

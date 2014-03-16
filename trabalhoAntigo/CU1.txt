@@ -1,0 +1,23 @@
+Nome Caso de uso:controlar férias
+
+Ator principal:funcionário RH
+
+Pré condições:receber com antecedência a programação de férias de todos os funcionários
+
+Pós condições:ter o controle de todos os períodos registrados
+
+Cenário de sucesso principal:
+1.responsável RH recebe o período de férias do funcionário.
+2.Para cada período de férias informado,o responsável do RH informa os funcionários relacionados.
+
+cenários alternativos:
+2a.o funcionário não está cadastrado
+2a1.ver variante"cadastrar funcionário" do caso de uso gerenciar funcionário.
+2b.o período já estar vinculado ao funcionário.
+2b1.abortar caso de uso
+
+Regras de negócio:
+-todos os funcionários devem ter seus períodos cadastrados;
+-total do período de férias não deve ultrapassar os 30 dias;
+-o funcionário pode optar por cancelar em até 3 vezes o período de férias;
+-cada funcionário tem que ter no mínimo 20 dias.

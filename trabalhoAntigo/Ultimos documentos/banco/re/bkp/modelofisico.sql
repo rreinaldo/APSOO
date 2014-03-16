@@ -1,0 +1,105 @@
+-- Geração de Modelo físico
+-- Sql ANSI 2003 - brModelo.
+
+
+
+CREATE TABLE marcacao (
+id_marcacao numeric4) PRIMARY KEY,
+id_dia_semana Número(4),
+horario Datetime(),
+tp_marcacao numeric(1)
+)
+
+CREATE TABLE dia_semana (
+id_dia_semana Número(4) PRIMARY KEY,
+id_turno Número(4),
+nm_dia varchar(50),
+tp_dia Número(1),
+jornada Número(4)
+)
+
+CREATE TABLE func_turno (
+cpf Número(11),
+id_turno Número(4),
+dt_inicial datetime,
+dt_fim datetime
+)
+
+CREATE TABLE turno (
+id_turno Número(4) PRIMARY KEY,
+descricao varchar(200)
+)
+
+CREATE TABLE parcela (
+id_parcela Número(4) PRIMARY KEY,
+id_ferias Número(4),
+dt_inicial datetime,
+dt_final datetime
+)
+
+CREATE TABLE ferias (
+id_ferias Número(4) PRIMARY KEY,
+cpf Número(11),
+dias_gozados Número(2),
+dias_vendidos Número(2)
+)
+
+CREATE TABLE licenca (
+id_licenca Número(4) PRIMARY KEY,
+cpf Número(11),
+dt_inicial datetime,
+dt_final datetime,
+tp_licanca Número(1)
+)
+
+CREATE TABLE departamento (
+id_depto Número(4) PRIMARY KEY,
+descricao varchar(200)
+)
+
+CREATE TABLE funcionario (
+cpf Número(11) PRIMARY KEY,
+id_dept Número(4),
+nm_func varchar(50),
+pis Número(11),
+saldo_horas Número(10),
+matr_func Número(6),
+cpf_chefe Número(11),
+FOREIGN KEY(id_dept) REFERENCES departamento (id_depto)
+)
+
+CREATE TABLE evento (
+id_evento Número(4) PRIMARY KEY,
+cpf_evento Número(11),
+id_reg Número(4),
+descricao varchar(200),
+tipo varchar(10),
+justificativa varchar(200),
+FOREIGN KEY(cpf_evento) REFERENCES funcionario (cpf)
+)
+
+CREATE TABLE item_registro (
+id_item Número(4) PRIMARY KEY,
+id_reg Número(4),
+horario datetime,
+tipo_marcacao Número(4),
+tipo_registro Número(4)
+)
+
+CREATE TABLE registro (
+id_registro Número(4) PRIMARY KEY,
+cpf_reg Número(11),
+data datetime,
+jornada Número(4),
+FOREIGN KEY(cpf_reg) REFERENCES funcionario (cpf)
+)
+
+ALTER TABLE marcacao ADD FOREIGN KEY(id_dia_semana) REFERENCES dia_semana (id_dia_semana)
+ALTER TABLE dia_semana ADD FOREIGN KEY(id_turno) REFERENCES turno (id_turno)
+ALTER TABLE func_turno ADD FOREIGN KEY(cpf) REFERENCES funcionario (cpf)
+ALTER TABLE func_turno ADD FOREIGN KEY(id_turno) REFERENCES turno (id_turno)
+ALTER TABLE parcela ADD FOREIGN KEY(id_ferias) REFERENCES ferias (id_ferias)
+ALTER TABLE ferias ADD FOREIGN KEY(cpf) REFERENCES funcionario (cpf)
+ALTER TABLE licenca ADD FOREIGN KEY(cpf) REFERENCES funcionario (cpf)
+ALTER TABLE evento ADD FOREIGN KEY(id_reg) REFERENCES registro (id_registro)
+ALTER TABLE item_registro ADD FOREIGN KEY(id_reg) REFERENCES registro (id_registro)
